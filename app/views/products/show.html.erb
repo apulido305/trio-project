@@ -1,3 +1,13 @@
+<!--
+@Author: timaanonsen
+@Date:   01-06-2018 13:01::02
+@Filename: show.html.erb
+@Last modified by:   timaanonsen
+@Last modified time: 01-06-2018 13:01::44
+-->
+
+
+
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
@@ -23,6 +33,6 @@
   </p>
 <% end %>
 <h3>New Review</h3>
-<%= render 'reviews/form' %>
+<%= render 'reviews/form', review: @review%>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
