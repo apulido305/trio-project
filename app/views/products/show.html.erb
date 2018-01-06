@@ -19,8 +19,9 @@
   <p>
     <%= review.comment %>
     <br>
-    Added on: <%= review.created_at %>
+    Added <%= time_ago_in_words(review.created_at) %> ago
   </p>
+  <p><td><%= link_to 'Delete comment', review, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
 
   <h3>New Review</h3>
