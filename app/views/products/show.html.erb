@@ -3,7 +3,7 @@
 @Date:   01-06-2018 13:01::02
 @Filename: show.html.erb
 @Last modified by:   timaanonsen
-@Last modified time: 01-06-2018 13:01::44
+@Last modified time: 01-06-2018 17:01::40
 -->
 
 
@@ -24,18 +24,7 @@
 <%= @product.formatted_price %>
 </p>
 
-<h3>Reviews</h3>
-<% @product.reviews.each do |review| %>
-  <p>
-    <%= review.comment %>
-    <br>
-    Added on: <%= review.created_at %>
-  </p>
-<% end %>
-<<<<<<< HEAD
-<h3>New Review</h3>
-<%= render 'reviews/form', review: @review%>
-=======
+
 <h3>Reviews</h3>
 <% @product.reviews.each do |review| %>
   <p>
@@ -47,6 +36,5 @@
 
   <h3>New Review</h3>
 <%= render 'reviews/form', review: @review %>
->>>>>>> ddc8a8487502742f553611302e9d4379b6689742
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

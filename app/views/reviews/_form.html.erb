@@ -1,33 +1,43 @@
-<%= form_with(model: review, local: true) do |form| %>
-  <% if review.errors.any? %>
+<!--
+@Author: timaanonsen
+@Date:   01-06-2018 17:01::12
+@Filename: _form.html.erb
+@Last modified by:   timaanonsen
+@Last modified time: 01-06-2018 17:01::12
+-->
+
+
+
+<%= form_for(@review) do |f| %>
+  <% if @review.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
 
       <ul>
-      <% review.errors.full_messages.each do |message| %>
+      <% @review.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+
   <div class="field">
-      <%= form.label :comment %><br>
-      <%= form.text_area :comment %>
-    </div>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </div>
 
-    <% if @product.nil? %>
+
+  <% if @product.nil? %>
       <div class="field">
-        <%= form.label :product_id %><br>
-        <%= form.text_field :product_id %>
-      </div>
-    <% else %>
-      <%= form.label :product_id %><br>
-      <%= form.text_field :product_id, disabled: true, value: @product.id %>
-
-    <% end %>
-
-    <div class="actions">
-      <%= form.submit %>
+        <%= f.label :product_id %><br>
+        <%= f.text_field :product_id %>
     </div>
-    <% end %>
+  <% else %>
+    <%= f.hidden_field :product_id, value: @product.id %>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
