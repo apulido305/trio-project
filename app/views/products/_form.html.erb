@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <!--
 @Author: timaanonsen
 @Date:   01-06-2018 16:01::45
@@ -26,25 +27,33 @@
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+=======
+<% if logged_in? && current_user.admin? %>
+  <%= form_with(model: product, local: true) do |form| %>
+    <% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+>>>>>>> 75fd4196a5596f914b63ed9039ffd37f42d49e7e
 
-      <ul>
-      <% product.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% product.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name %>
+      <%= form.text_field :name, id: :product_name %>
     </div>
-  <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :product_name %>
-  </div>
+    <div class="field">
+      <%= form.label :description %>
+      <%= form.text_area :description, id: :product_description %>
+    </div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :product_description %>
-  </div>
-
+<<<<<<< HEAD
   <div class="field">
     <%= form.label :price_in_cents %>
     <%= form.number_field :price_in_cents, id: :product_price_in_cents %>
@@ -65,8 +74,15 @@
     <%= form.label :price_in_cents %>
     <%= form.number_field :price_in_cents, id: :product_price_in_cents %>
   </div>
+=======
+    <div class="field">
+      <%= form.label :price_in_cents %>
+      <%= form.number_field :price_in_cents, id: :product_price_in_cents %>
+    </div>
+>>>>>>> 75fd4196a5596f914b63ed9039ffd37f42d49e7e
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
 <% end %>

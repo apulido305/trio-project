@@ -31,6 +31,9 @@
 <h3>Reviews</h3>
 <% @product.reviews.each do |review| %>
   <p>
+    Added by:
+    <%= review.user.name %> |
+    Comment:
     <%= review.comment %>
     <br>
 <<<<<<< HEAD
@@ -39,10 +42,16 @@
     Added <%= time_ago_in_words(review.created_at) %> ago
 >>>>>>> 6cd078923e340dbfd7b532eff318ac635036e797
   </p>
-  <p><td><%= link_to 'Delete comment', review, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+  <% if logged_in? && (current_user == review.user || current_user.admin?) %>
+  <p><%= link_to 'Delete comment', review, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <% end %>
 <% end %>
 
-  <h3>New Review</h3>
+<h3>New Review</h3>
 <%= render 'reviews/form', review: @review %>
-<%= link_to 'Edit', edit_product_path(@product) %> |
+
+<% if logged_in? && current_user.admin? %>
+  <%= link_to 'Edit', edit_product_path(@product) %> |
+<% end %>
 <%= link_to 'Back', products_path %>
