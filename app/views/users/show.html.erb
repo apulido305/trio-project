@@ -1,4 +1,10 @@
 <h1>Welcome to <%= current_user.name %>'s profile</h1>
 
+<p>
+<% if logged_in? && current_user.admin? %>
+  You are Admin!
+<% end %>
+</p>
+
 <%= link_to "Edit profile", edit_user_path(current_user) %> |
 <%= link_to 'Back to shop', products_path %>

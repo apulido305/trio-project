@@ -5,8 +5,110 @@
     height: 100%;
 }
 
-// LOG IN AND SIGN UP
+// MOBILE
+// @media only screen and (max-width: 380px) {
+//   .container {
+//     width: 820px;
+//   }
+//
+//   .card-container.card {
+//     border-top: 1px solid #ccc;
+//     max-width: 100%;
+//     padding: 40px 40px;
+//   }
+//
+//   .card {
+//     padding: 20px 25px 30px;
+//     margin: 0 auto 25px;
+//     margin-top: 50px;
+//     -moz-border-radius: 2px;
+//     -webkit-border-radius: 2px;
+//     border-radius: 2px;
+//     -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+//     -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+//     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+//   }
+//
+//   .title {
+//     font-weight: bold;
+//     text-align: center;
+//     font-family: "Francois One",sans-serif;
+//     font-size: 56px;
+//     text-transform: uppercase;
+//     margin-bottom: 84px;
+//     padding-top: 36px;
+//   }
+//
+//   label {
+//     font-family: helvetica,arial,sans-serif;
+//     font-size: 38px;
+//     font-weight: 300;
+//     letter-spacing: .04rem;
+//     color: #222;
+//     display: block;
+//     margin-bottom: 30px;
+//   }
+//
+//   #inputName, #inputEmail, #inputPassword, button {
+//     width: 100%;
+//     display: block;
+//     margin-bottom: 60px;
+//     z-index: 1;
+//     position: relative;
+//     -moz-box-sizing: border-box;
+//     -webkit-box-sizing: border-box;
+//     box-sizing: border-box;
+//     padding-left: 10px;
+//   }
+//
+//   #inputName, #inputEmail, #inputPassword {
+//     direction: ltr;
+//     height: 105px;
+//     font-size: 35px;
+//   }
+//
+//   .btn.btn-signin {
+//     font: 700 1.5rem/1.36 helvetica,arial,sans-serif;
+//     background-color: black;
+//     height: 41px;
+//     margin-top: 22px;
+//     padding: 0px;
+//     margin-bottom: 107px;
+//     font-weight: 700;
+//     font-size: 34px;
+//     height: 100px;
+//     -moz-border-radius: 3px;
+//     -webkit-border-radius: 3px;
+//     border-radius: 3px;
+//     border: none;
+//     -o-transition: all 0.218s;
+//     -moz-transition: all 0.218s;
+//     -webkit-transition: all 0.218s;
+//     transition: all 0.218s;
+//   }
+//
+//   .signup-link a {
+//     font-family: helvetica,arial,sans-serif;
+//     background-color: white;
+//     color: #666;
+//     font-size: 33px;
+//   }
+//   .signup-link a:hover {
+//     font-family: helvetica,arial,sans-serif;
+//     background-color: white;
+//     color: #666;
+//   }
+//
+//
+//   .checkbox input[type='checkbox']{
+//     margin-top: 0px;
+//   }
+// }
 
+
+// Iphone 6
+
+// Large screens
 .card-container.card {
   border-top: 1px solid #ccc;
   max-width: 350px;
@@ -76,7 +178,7 @@
   font-size: 16px;
 }
 
-// .form-signin input[type=text],
+.form-signin input[type=text],
 #inputName, #inputEmail, #inputPassword, button {
   width: 100%;
   display: block;
@@ -159,8 +261,4 @@ label {
   font: 2.6rem/1.36 "Francois One",sans-serif;
   /* font-size: 2.6rem; */
   text-transform: uppercase;
-}
-
-.checkbox input[type='checkbox']{
-  margin-top: 0px;
 }

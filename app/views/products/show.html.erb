@@ -17,6 +17,9 @@
 <h3>Reviews</h3>
 <% @product.reviews.each do |review| %>
   <p>
+    Added by:
+    <%= review.user.name %> |
+    Comment:
     <%= review.comment %>
     <br>
     Added <%= time_ago_in_words(review.created_at) %> ago
@@ -32,5 +35,5 @@
 
 <% if logged_in? && current_user.admin? %>
   <%= link_to 'Edit', edit_product_path(@product) %> |
-<% end %>  
+<% end %>
 <%= link_to 'Back', products_path %>
