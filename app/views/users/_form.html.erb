@@ -1,0 +1,26 @@
+<%= render 'shared/errors', obj: @user %>
+
+<%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+  <div class="card card-container">
+      <p class='title'>Sign Up</p>
+      <form class="form-signin">
+          <span id="reauth-email" class="reauth-email"></span>
+          <%= f.label :name %>
+          <%= f.text_field :name, id: "inputName", class: "form-control", autofocus: true %>
+          <%= f.label :email %>
+          <%= f.email_field :email, id: "inputEmail", class: "form-control" %>
+          <%= f.label :password %>
+          <%= f.password_field :password, id: "inputPassword", class: "form-control" %>
+          <%= f.label :confirm_password %>
+          <%= f.password_field :password_confirmation, id: "inputPassword", class: "form-control" %>
+          <!-- <div id="remember" class="checkbox">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+          </div> -->
+          <%= f.submit(@user.new_record? ? 'Sign up' : 'Update your account', class: "btn btn-lg btn-primary btn-block btn-signin") %>
+
+          <p class="signup-link"><%= link_to 'Log in', login_path %></p>
+        </form>
+  </div>
+<% end %>
