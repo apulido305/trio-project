@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   # GET /reviews
   # GET /reviews.json
@@ -25,9 +27,11 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+    @review.user = current_user
 
     respond_to do |format|
       if @review.save
+        flash[:success] = "Review was successfully created"
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render :show, status: :created, location: @review }
       else
@@ -35,6 +39,9 @@ class ReviewsController < ApplicationController
         format.json { render json: @review.errors, status: :unprocessable_entity }
       end
     end
+
+    review = post.reviews.create(review_params.merge(user_id: current_user.id))
+    respond_with post, comment
   end
 
   # PATCH/PUT /reviews/1
@@ -69,6 +76,13 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:comment, :product_id)
+      params.require(:review).permit(:comment, :product_id, :user_id)
+    end
+
+    def require_same_user
+      if current_user != @review.user and !current_user.admin?
+        flash[:danger] = 'You can only edit or delete your own article'
+        redirect_to root_path
+      end
     end
 end
