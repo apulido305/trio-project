@@ -1,10 +1,13 @@
+<%= cloudinary_js_config %>
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
-
 <p>
+<%= image_tag @product.picture.standard.url %>
+</p>
+
   <strong>Description:</strong>
   <%= @product.description %>
 </p>

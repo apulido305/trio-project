@@ -60,7 +60,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
         format.json { head :no_content }
       end
-    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +70,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :description, :price_in_cents)
+      params.require(:product).permit(:name, :description, :price_in_cents, :picture, :thumb, :standard)
     end
 end
