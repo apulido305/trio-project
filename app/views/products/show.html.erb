@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!--
 @Author: timaanonsen
 @Date:   01-06-2018 13:01::02
@@ -8,13 +9,18 @@
 
 
 
+=======
+<%= cloudinary_js_config %>
+>>>>>>> d3096d31dc5439a9cfdd3a8525731e2e5f800905
 <p id="notice"><%= notice %></p>
 <p>
   <strong>Name:</strong>
   <%= @product.name %>
 </p>
-
 <p>
+<%= image_tag @product.picture.standard.url %>
+</p>
+
   <strong>Description:</strong>
   <%= @product.description %>
 </p>
