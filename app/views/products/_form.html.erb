@@ -1,12 +1,9 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 <!--
 @Author: timaanonsen
 @Date:   01-06-2018 16:01::45
 @Filename: _form.html.erb
 @Last modified by:   timaanonsen
-@Last modified time: 01-06-2018 16:01::47
+@Last modified time: 01-07-2018 13:01::04
 -->
 
 
@@ -23,22 +20,17 @@
       </ul>
     </div>
   <% end %>
-=======
 <%= form_with(model: product, local: true) do |form| %>
   <% if product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-=======
-=======
 <%= cloudinary_js_config %>
 
->>>>>>> d3096d31dc5439a9cfdd3a8525731e2e5f800905
 <% if logged_in? && current_user.admin? %>
   <%= form_with(model: product, local: true) do |form| %>
     <% if product.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
->>>>>>> 75fd4196a5596f914b63ed9039ffd37f42d49e7e
 
         <ul>
         <% product.errors.full_messages.each do |message| %>
@@ -58,16 +50,10 @@
       <%= form.text_area :description, id: :product_description %>
     </div>
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> d3096d31dc5439a9cfdd3a8525731e2e5f800905
   <div class="field">
     <%= form.label :price_in_cents %>
     <%= form.number_field :price_in_cents, id: :product_price_in_cents %>
   </div>
-<<<<<<< HEAD
->>>>>>> 6cd078923e340dbfd7b532eff318ac635036e797
 
   <div class="field">
     <%= form.label :name %>
@@ -83,21 +69,20 @@
     <%= form.label :price_in_cents %>
     <%= form.number_field :price_in_cents, id: :product_price_in_cents %>
   </div>
-=======
     <div class="field">
       <%= form.label :price_in_cents %>
       <%= form.number_field :price_in_cents, id: :product_price_in_cents %>
     </div>
->>>>>>> 75fd4196a5596f914b63ed9039ffd37f42d49e7e
-=======
+
   <div class="picture">
     <%= form.file_field(:picture) %>
   </div>
 
->>>>>>> d3096d31dc5439a9cfdd3a8525731e2e5f800905
+
 
     <div class="actions">
       <%= form.submit %>
     </div>
+    <% end %>
   <% end %>
-<% end %>
+  <% end %>
