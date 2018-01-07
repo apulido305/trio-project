@@ -44,11 +44,11 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @product.destroy
-    respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+      @product.destroy
+      respond_to do |format|
+        format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+        format.json { head :no_content }
+      end
   end
 
   private
@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.require(:product).permit(:name, :description, :price_in_cents)
+      params.require(:product).permit(:name, :description, :price_in_cents, :picture, :thumb, :standard)
     end
 
     def require_admin

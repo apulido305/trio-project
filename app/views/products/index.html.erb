@@ -1,3 +1,4 @@
+<%= cloudinary_js_config %>
 <p id="notice"><%= notice %></p>
 
 <h1>Listing products</h1>
@@ -15,6 +16,7 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
+        <td><%= image_tag product.picture.thumb.url %></td>
         <td><%= product.description %></td>
         <td><%= product.formatted_price %></td>
         <td><%= link_to 'Show', product %></td>
