@@ -1,22 +1,22 @@
 <%= cloudinary_js_config %>
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-<p>
-<%= image_tag @product.picture.standard.url %>
-</p>
 
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
+<div class="col-sm-6">
+  <p class="show-img"><%= image_tag @product.picture.standard.url %></p>
+</div>
 
-<p>
-<strong>Price:</strong>
-<%= @product.formatted_price %>
-</p>
+<div class="col-sm-6" id="product-info">
+  <h2 class="product-title"><%= @product.name %></h2>
+  <p class="price">$ <%= @product.formatted_price %></p>
+  <div class="rating">
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star checked"></span>
+    <span class="fa fa-star"></span>
+  </div>
+  <p class="description"><%= @product.description %></p>
 
+<<<<<<< HEAD
 <h3>Reviews</h3>
 <% @product.reviews.each do |review| %>
   <p>
@@ -31,13 +31,27 @@
 
   <% if logged_in? && (current_user == review.user || current_user.admin?) %>
   <p><%= link_to 'Delete comment', review, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+=======
+  <h3 class="reviews">Reviews</h3>
+  <% @product.reviews.each do |review| %>
+    <p class="comment"><q> <%= review.comment %> </q></p>
+    <p class="user-comment">Added by: <%= review.user.name %> |
+      <span>Added <%= time_ago_in_words(review.created_at) %> ago</span> |
+      <span id="delete-comment">
+        <% if logged_in? && (current_user == review.user || current_user.admin?) %>
+          <%= link_to 'Delete comment', review, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </span>
+    </p>
+>>>>>>> 0f151f4342f6e0c67a81d25c7b65a7de04bbbf20
   <% end %>
-<% end %>
 
-<h3>New Review</h3>
-<%= render 'reviews/form', review: @review %>
+  <h3 class="reviews">New Review</h3>
+  <%= render 'reviews/form', review: @review %>
 
-<% if logged_in? && current_user.admin? %>
-  <%= link_to 'Edit', edit_product_path(@product) %> |
-<% end %>
-<%= link_to 'Back', products_path %>
+  <p class='show-links'>
+    <% if logged_in? && current_user.admin? %>
+      <%= link_to 'Edit Product', edit_product_path(@product) %>
+    <% end %>
+  </p>
+</div>

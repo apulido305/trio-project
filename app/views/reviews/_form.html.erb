@@ -2,7 +2,6 @@
   <% if review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(review.errors.count, "error") %> prohibited this review from being saved:</h2>
-
       <ul>
       <% review.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -12,20 +11,22 @@
   <% end %>
 
   <div class="field">
-      <%= form.label :comment %><br>
-      <%= form.text_area :comment %>
-    </div>
+    <%= form.text_area :comment, class: "review-text-area" %>
+  </div>
 
-    <% if @product.nil? %>
-     <div class="field">
-       <%= form.label :product_id %><br>
-       <%= form.text_field :product_id %>
-     </div>
-   <% else %>
-     <%= form.hidden_field :product_id, value: @product.id %>
-   <% end %>
-
-    <div class="actions">
-      <%= form.submit %>
+  <% if @product.nil? %>
+    <div class="field">
+      <%= form.label :product_id %><br>
+      <%= form.text_field :product_id %>
     </div>
+<<<<<<< HEAD
+=======
+  <% else %>
+    <%= form.hidden_field :product_id, value: @product.id %>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+>>>>>>> 0f151f4342f6e0c67a81d25c7b65a7de04bbbf20
 <% end %>

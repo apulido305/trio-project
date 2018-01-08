@@ -8,4 +8,7 @@ class Product < ActiveRecord::Base
     sprintf("%.2f", price_in_dollars)
   end
 
+  def self.search(search)
+    where("name ILIKE ? OR description ILIKE ?", "%#{search}%", "%#{search}%") 
+  end
 end
