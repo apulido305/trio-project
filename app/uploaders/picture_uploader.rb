@@ -36,7 +36,7 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :radius=>50
   end
   version :standard do
-    process :resize_to_fill => [191, 287, :north]
+    process :resize_to_fill => [535, 803, :north]
   end
   #
   # version :thumbnail do

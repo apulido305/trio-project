@@ -1,36 +1,44 @@
 <%= cloudinary_js_config %>
-<p id="notice"><%= notice %></p>
 
-<h1>Listing products</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= image_tag product.picture.thumb.url %></td>
-        <td><%= product.description %></td>
-        <td><%= product.formatted_price %></td>
-        <td><%= link_to 'Show', product %></td>
-        <% if logged_in? && current_user.admin? %>
-          <td><%= link_to 'Edit', edit_product_path(product) %></td>
-          <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<header class="jumbotron">
+  <div class="container">
+    <h1>Welcome to Urban Miami</h1>
+  </div>
+</header>
 
 <% if logged_in? && current_user.admin? %>
-  <%= link_to 'New Product', new_product_path %>
+  <div class="row new-product">
+    <button type="button" class="btn new-product-btn">
+      <%= link_to 'New Product', new_product_path %>
+    </button>
+  </div>
 <% end %>
+
+<h1 class="new-arrivals">New Arrivals</h1>
+<div class="row text-center" style="display:flex; flex-wrap: wrap;">
+<% if @products.blank? %>
+  <h4>There are no products containing "<%= params[:search] %>"</h4>
+<% end %>
+  <% @products.each do |product| %>
+    <div class="col-md-3 col-sm-6">
+      <div class="thumbnail">
+        <%= link_to product do %>
+          <%= image_tag product.picture.standard.url %>
+        <% end %>
+
+        <div class="caption">
+          <%= link_to product do %>
+            <h4><%= product.name %></h4>
+            <p>$<%= product.formatted_price %></p>
+          <% end %>
+        </div>
+        <p class='links_index'>
+          <% if logged_in? && current_user.admin? %>
+            <%= link_to 'Edit', edit_product_path(product) %>
+            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
