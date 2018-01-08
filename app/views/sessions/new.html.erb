@@ -2,18 +2,12 @@
   <div class="card card-container">
     <p class='title'>Log In</p>
     <form class="form-signin">
-      <!-- <span id="reauth-email" class="reauth-email"></span> -->
       <%= f.label :email %>
       <%= f.text_field :email, id: "inputEmail", class: "form-control", autofocus: true %>
       <%= f.label :password %>
       <%= f.password_field :password, id: "inputPassword", class: "form-control", autocomplete: 'off' %>
-      <!-- <div id="remember" class="checkbox">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me </input>
-        </label>
-      </div> -->
       <%= f.submit 'Log in', class: "btn btn-lg btn-primary btn-block btn-signin" %>
-      <p class="signup-link"><%= link_to 'Forgot your password?' %></p>
+      <p class="signup-link f-password"><%= link_to 'Forgot your password?' %></p>
       <p class="signup-link"><%= link_to 'Sign up', signup_path %></p>
     </form>
   </div>

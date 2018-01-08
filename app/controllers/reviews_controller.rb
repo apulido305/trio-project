@@ -23,8 +23,8 @@ class ReviewsController < ApplicationController
 
     respond_to do |format|
       if @review.save
-        flash[:success] = "Review was successfully created"
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
+        flash[:success] = "Review was successfully created."
+        format.html { redirect_to @review.product }
         format.json { render :show, status: :created, location: @review }
       else
         format.html { render :new }
@@ -36,7 +36,8 @@ class ReviewsController < ApplicationController
   def update
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        flash[:success] = "Review was successfully updated."
+        format.html { redirect_to @review }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -48,7 +49,8 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Review was successfully destroyed.' }
+      flash[:danger] = "Review was successfully deleted."
+      format.html { redirect_to @review.product }
       format.json { head :no_content }
     end
   end
