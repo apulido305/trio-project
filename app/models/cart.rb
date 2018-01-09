@@ -21,5 +21,4 @@ class Cart < ApplicationRecord
     sprintf("%.2f", sum)
   end
 
-
 end

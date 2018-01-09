@@ -49,7 +49,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      flash[:danger] = "Review was successfully deleted."
+      flash[:success] = "Review was successfully deleted."
       format.html { redirect_to @review.product }
       format.json { head :no_content }
     end

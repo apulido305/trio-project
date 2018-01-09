@@ -1,5 +1,29 @@
-
 <% if notice %>
-<p id="notice"><%= notice %></p>
+  <p id="notice"><%= notice %></p>
 <% end %>
+
+<h1 class="cart-title">Shopping Cart</h1>
+
+<table>
+  <tr class='tr-header'>
+    <th></th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Quantity</th>
+    <th>Total Price</th>
+  </tr>
+  <% @cart.line_items.each do |item| %>
+    <tr class='products-tr'>
+      <td class="product-image"><%= image_tag item.product.picture.standard.url %></td>
+      <td class="product-name"><%= item.product.name %></td>
+      <td class="quantity"><%= item.quantity %>&times;</td>
+      <td class="product-price">$<%= item.product.formatted_price %></td>
+      <td></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= button_to 'Empty cart', @cart, method: :delete, confirm: 'Are you sure?', class: 'empty-cart-btn' %>
+
 <%= render @cart %>
+
