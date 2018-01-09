@@ -11,9 +11,15 @@ class Cart < ApplicationRecord
     current_item
   end
 
-#   def total_price
-# line_items.to_a.sum { |item| item.total_price }
-#   end
+  def total_price
+    price_array = []
+    line_items.each do |item|
+      price_array.push(item.total_price)
+    end
+    sum = 0
+    price_array.each { |price| sum+=price.to_f }
+    sprintf("%.2f", sum)
+  end
 
 
 end
