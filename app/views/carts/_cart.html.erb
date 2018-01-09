@@ -1,25 +1,36 @@
-<div class="cart_title">Your Cart</div>
-<table>
-<%= render(cart.line_items) %>
-<tr class="total_line">
-<td colspan="2">Total: $<%= cart.total_price %></td>
-<td class="total_cell"></td>
-</tr>
-</table>
-<%= form_tag charges_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
-      </div>
-    <% end %>
-  </article>
+<h1 class="cart-title">Shopping Cart</h1>
 
-  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+<table>
+  <tr class='tr-header'>
+    <th></th>
+    <th>Name</th>
+    <th>Quantity</th>
+    <th>Price</th>
+  </tr>
+  <% @cart.line_items.each do |item| %>
+    <tr class='products-tr'>
+      <td class="product-image"><%= image_tag item.product.picture.standard.url %></td>
+      <td class="product-name"><%= item.product.name %></td>
+      <td class="quantity"><%= item.quantity %></td>
+      <td class="product-price">$<%= item.product.formatted_price %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p class='total'>
+  Total: $<%= cart.total_price %>
+</p>
+
+  <%= form_tag charges_path do  %>
+    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="URBAN MIAMI Thanks YOU!!"
+          data-description="URBAN MIAMI"
           data-amount="<%= cart.total_price.to_i * 100 %>"
           data-locale="auto"></script>
-<% end %>
-<%= button_to 'Empty cart', cart, method: :delete,
-confirm: 'Are you sure?' %>
+      <script>
+        document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';
+      </script>
+      <button type="submit" class="stripe-cart-btn">Buy</button>
+  <% end %>
+
+<%= link_to 'Empty cart', @cart, method: :delete, confirm: 'Are you sure?', class: 'empty-cart-link' %>
