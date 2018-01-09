@@ -331,7 +331,7 @@ label {
 }
 
 // Large Phone / Iphone 6
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 415px) {
   // .navbar {
   //   height: 60px;
   // }
@@ -342,10 +342,10 @@ label {
   //   margin-left: -77px;
   // }
   //
-  // #search-form {
-  //   display: none;
-  //   z-index: 0;
-  // }
+  #search-form {
+    display: none;
+    // z-index: 0;
+  }
   //
   // .fa-shopping-cart {
   //   margin-top: -63px;
