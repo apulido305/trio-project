@@ -4,7 +4,7 @@ class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
   def index
-    @carts = Cart.all
+    redirect_to current_cart
   end
 
   # GET /carts/1
