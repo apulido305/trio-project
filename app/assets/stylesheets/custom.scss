@@ -344,7 +344,6 @@ label {
   //
   #search-form {
     display: none;
-    // z-index: 0;
   }
   //
   // .fa-shopping-cart {
@@ -697,4 +696,22 @@ th {
   font-size: 15px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+// Thank you page (new order)
+.container-new-order {
+  padding-top: 30px;
+}
+
+.h2-new-order{
+  font-size: 35px;
+  text-align: center;
+  font-family: "Francois One",sans-serif;
+}
+
+.new-order {
+  font-family: helvetica,arial,sans-serif !important;
+  text-align: center;
+  font-weight: 300;
+  font-size: 18px;
 }
