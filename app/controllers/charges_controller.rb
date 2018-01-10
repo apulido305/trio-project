@@ -12,6 +12,7 @@ class ChargesController < ApplicationController
   end
 
   def create
+    @products = Product.all
     # Amount in cents
     @amount = 500
 
@@ -27,9 +28,23 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
+    flash[:success] = "Thank you! We're processing your order and will send you an email confirmation shortly."
+    redirect_to products_url
+
+    # respond_to do |format|
+    #   if @amount.save
+    #     flash[:success] = "Product was successfully created."
+    #     format.html { redirect_to products_url }
+    #     format.json { render :show, status: :created, location: @product }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @product.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to new_charge_path
+    # redirect_to new_charge_path
   end
 
 end
