@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
 
   post '/users' => 'users#create'
-  
+
   resources :line_items
   resources :carts
   resources :reviews
